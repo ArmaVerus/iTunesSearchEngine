@@ -1,0 +1,18 @@
+﻿@using iTunesSearchEngine.Models
+    @model iTunesSearchEngine.Models.SearchBar
+
+@{
+    ViewBag.Title = "Search";
+}
+
+@foreach (var i in Model.Results)
+{<div class="row">
+        <table class="table">
+            <tr>
+                <td><img src="@i.artworkUrl100" /></td>
+                <td style="text-align:center">@i.trackName</td>
+                <td style="text-align:center">Released: @i.releaseDate.ToShortDateString()</td>
+            </tr>
+        </table>
+    </div>
+}

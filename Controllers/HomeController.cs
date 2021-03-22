@@ -18,14 +18,15 @@ namespace iTunesSearchEngine.Controllers
         }
 
         [HttpGet]
-        public ActionResult Search(String SearchQuery, String SearchCategory, DateTime? releaseDate) 
+        public ActionResult Search(String SearchQuery, String SearchCategory) 
         {
             try
             {
+                //Requests for the iTunes API results
                 SearchBar results = new SearchBar();
                 String api_template = "https://itunes.apple.com/search?term=";
                 String category_template = "&media=";
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(api_template + SearchQuery + category_template + SearchCategory);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(api_template + SearchQuery + category_template + SearchCategory); //Creating the full Search query
                 request.Method = "GET";
                 request.ContentType = "application/json";
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -40,7 +41,7 @@ namespace iTunesSearchEngine.Controllers
                     }
                 }
 
-                results = JsonConvert.DeserializeObject<SearchBar>(listresult);
+                results = JsonConvert.DeserializeObject<SearchBar>(listresult); //Converting the response into an understandable format
                 return View(results);
             }
             catch (Exception e) {

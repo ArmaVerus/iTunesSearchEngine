@@ -5,6 +5,8 @@
     ViewBag.Title = "Search";
 }
 
+@*Page should only render the results, Filtered by Release Date, so anything released over 8 years ago will not be displayed*@
+
 @foreach (var i in Model.Results.Where(i => i.releaseDate.Year > DateTime.Now.Year - 8 ))
 {<div class="row">
         <table class="table">

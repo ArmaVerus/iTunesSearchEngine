@@ -21,8 +21,9 @@ namespace iTunesSearchEngine.Models
         public List<ItemResult> Results { get; set; }
 
     }
-    public enum Category 
+    public enum Category //Enumerator to contain all the selectable categories available.
     {
+        all,
         movie,
         podcast,
         music,

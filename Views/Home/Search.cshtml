@@ -5,7 +5,7 @@
     ViewBag.Title = "Search";
 }
 
-@foreach (var i in Model.Results)
+@foreach (var i in Model.Results.Where(i => i.releaseDate.Year > DateTime.Now.Year - 8 ))
 {<div class="row">
         <table class="table">
             <tr>
